@@ -1,13 +1,12 @@
 use bytes::Bytes;
-use slatedb::db::Db;
 use slatedb::config::DbOptions;
+use slatedb::db::Db;
 use slatedb::fail_parallel::FailPointRegistry;
-use slatedb::object_store::{ObjectStore, memory::InMemory};
+use slatedb::object_store::{memory::InMemory, ObjectStore};
 use std::sync::Arc;
 
 #[tokio::main]
 async fn main() {
-
     // Initialize tracing subscriber to see the logs
     tracing_subscriber::fmt::init();
 
@@ -16,13 +15,10 @@ async fn main() {
     let options = DbOptions::default();
     let fp_registry = Arc::new(FailPointRegistry::new());
 
-     // Open the database - this will trigger the logging
-    let db = Db::open_with_fp_registry(
-        "/tmp/test_kv_store1",
-        options,
-        object_store,
-        fp_registry,
-    ).await.expect("Failed to open database");
+    // Open the database - this will trigger the logging
+    let db = Db::open_with_fp_registry("/tmp/test_kv_store1", options, object_store, fp_registry)
+        .await
+        .expect("Failed to open database");
 
     //let kv_store = Db::open_with_opts(
     //    "/tmp/test_kv_store",
@@ -38,10 +34,7 @@ async fn main() {
     db.put(key, value).await;
 
     // Get
-    assert_eq!(
-        db.get(key).await.unwrap(),
-        Some(Bytes::from_static(value))
-    );
+    assert_eq!(db.get(key).await.unwrap(), Some(Bytes::from_static(value)));
 
     // Delete
     db.delete(key).await;
