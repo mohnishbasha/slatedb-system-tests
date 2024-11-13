@@ -1,0 +1,12 @@
+[package]
+name = "test-db-configs"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tracing = "0.1"
+tracing-subscriber = "0.3"
+bytes = "*"
+object_store = "*"
+tokio = "*"
+slatedb = { path = "../../slatedb" }
