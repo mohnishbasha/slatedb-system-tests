@@ -1,0 +1,11 @@
+[package]
+name = "test-tracing-quickstart"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bytes = "*"
+object_store = "*"
+tokio = "*"
+tracing-subscriber = "*"
+slatedb = "*"
