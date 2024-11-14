@@ -1,0 +1,12 @@
+[package]
+name = "test-tracing-with-env-logger"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bytes = "*"
+object_store = "*"
+tokio = "*"
+env_logger = "*"
+log = "*"
+slatedb = { path = "../../slatedb" }

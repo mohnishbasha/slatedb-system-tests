@@ -1,0 +1,16 @@
+# Compiled source #
+###################
+**/target/
+
+# Cargo #
+#########
+Cargo.lock
+
+# Operating System Files #
+#########################
+.DS_Store
+Thumbs.db
+
+# Editor Files #
+###############
+*.vscode
