@@ -8,4 +8,4 @@ bytes = "*"
 object_store = "*"
 tokio = "*"
 tracing-subscriber = "*"
-slatedb = "*"
+slatedb = { path = "../../slatedb" }
